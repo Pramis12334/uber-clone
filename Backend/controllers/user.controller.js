@@ -1,5 +1,5 @@
 const userModel = require('../Models/user.model');
-const useService = require('../services/user.service');
+const userService = require('../services/user.service');
 const { validationResult } = require('express-validator');
 
 module.exports.registerUser = async (req, res, next) => {
@@ -13,7 +13,7 @@ module.exports.registerUser = async (req, res, next) => {
 
    const hashedPassword = await userModel.hashPassword(password);
 
-   const user = await userModel.createUser({
+   const user = await userService.createUser({
     firstname: fullname.firstname,
     lastname: fullname.lastname,
     email,
@@ -22,5 +22,4 @@ module.exports.registerUser = async (req, res, next) => {
 
    const token = user.generateAuthToken();
    res.status(201).json({ token, user});
-   next();
 }
