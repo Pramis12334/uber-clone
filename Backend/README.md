@@ -11,8 +11,8 @@
 Registers a new user. Validates input, hashes the password, stores the user in the database, and returns a JWT token with user details.
 
 ### Request Body
-```json
 {
+ 
   "fullname": {
     "firstname": "John",
     "lastname": "Doe"
@@ -20,6 +20,8 @@ Registers a new user. Validates input, hashes the password, stores the user in t
   "email": "johndoe@example.com",
   "password": "securePassword123"
 }
+
+
 # User Login API
 
 ## Endpoint
@@ -35,7 +37,6 @@ If the credentials are valid, it returns a JWT token along with the user details
 ## Request Body
 Send JSON in the following format:
 
-```json
 {
   "email": "johndoe@example.com",
   "password": "securePassword123"
