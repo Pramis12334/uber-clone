@@ -13,12 +13,12 @@ Registers a new user. Validates input, hashes the password, stores the user in t
 ### Request Body
 {
  
-  "fullname": {
-    "firstname": "John",
-    "lastname": "Doe"
+ - `fullname`: {
+   - `firstname`: `John`,
+   - `lastname`: `Doe`
   },
-  "email": "johndoe@example.com",
-  "password": "securePassword123"
+ - `email`: `johndoe@example.com`,
+ - `password`: `securePassword123`
 }
 
 
@@ -38,8 +38,8 @@ If the credentials are valid, it returns a JWT token along with the user details
 Send JSON in the following format:
 
 {
-  "email": "johndoe@example.com",
-  "password": "securePassword123"
+   - `email`: `johndoe@example.com`,
+ - `password`: `securePassword123`
 }
 
 # User Profile API
@@ -66,13 +66,13 @@ It requires a valid JWT token in the **Authorization** header.
 
 ### Success (200 OK)
 {
-  "_id": "64f1c2e9a1b2c3d4e5f6g7h8",
-  "fullname": {
-    "firstname": "John",
-    "lastname": "Doe"
+ - `_id`: `64f1c2e9a1b2c3d4e5f6g7h8`,
+ - `fullname`: {
+   - `firstname`: `John`,
+   - `lastname`: `Doe`
   },
-  "email": "johndoe@example.com",
-  "socketId": "abc123xyz"
+ - `email`: `johndoe@example.com`,
+ - `password`: `securePassword123`
 }
 
 # User Logout API
@@ -100,5 +100,5 @@ Depending on implementation, logout may invalidate the token on the server or si
 
 ### Success (200 OK)
 {
-  "message": "Successfully logged out"
+ - `message`: `Successfully logged out`
 }
