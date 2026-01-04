@@ -23,23 +23,25 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        select: false,
+       select: false,
     },
     socketId: {
         type: String
     }
 });
 
-userSchema.methods.generateAuthToken = () => {
-const token = jwt.sign({_id: this.id}, process.env.JWT_SECRET);
+userSchema.methods.generateAuthToken = function () {
+const token = jwt.sign({ _id: this.id }, process.env.JWT_SECRET, { expiresIn: '24h'});
 return token;
 }
 
-userSchema.methods.comparePassword = async (password) => {
+//compare ou used an arrow function. Arrow functions don’t bind their own this, so this.password is undefined.
+//That makes bcrypt receive password (the plain text) and undefined (instead of the hashed password), hence the error: data and hash arguments required
+userSchema.methods.comparePassword = async function(password) {
     return await bcrypt.compare(password, this.password);
 }
 
-userSchema.statics.hashPassword = async (password) => {
+userSchema.statics.hashPassword = async function (password) {
     return await bcrypt.hash(password, 10);
 }
 
