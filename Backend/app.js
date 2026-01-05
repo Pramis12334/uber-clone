@@ -7,14 +7,11 @@ const app= express();
 const path = require('path');
 const cors =require('cors');
 const userRoutes = require('./routes/user.routes');
+const captainRoutes = require('./routes/captain.routes');
 const cookieParser = require('cookie-parser');
 
 const connectToDb = require('./db/db');
 connectToDb();
-
-
-
-
 
 app.use(cors());
 app.use(express.json());
@@ -26,5 +23,7 @@ res.send('hi');
 });
 
 app.use('/users', userRoutes);
+
+app.use('/captains', captainRoutes);
 
 module.exports=app;
